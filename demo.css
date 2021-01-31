@@ -1,0 +1,18 @@
+#note{
+	width: 100%;
+	background-color:#0cc;
+	border: 1px solid grey;
+
+}
+#noteBtn{
+	background-color: #009600;
+	cursor: pointer;
+	float: right;
+	font-size: 20px;
+
+}	
+
+
+#noteBtn:hover{
+	background-color: white;
+	border: 1px solid #009600;

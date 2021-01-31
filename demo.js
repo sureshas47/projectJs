@@ -166,36 +166,53 @@
 // });
 
 
-function getDateResults()
-{
-	let data=new Date();
-	switch (data.getDay().toString()) {
-		case '0': document.write("sunday");
-			break;
-		case '1': document.write("mon");
-			break;
-		case '2': document.write("tue");
-			break;
-		case '3': document.write("wed");
-			break;
-		case '4': document.write("thursday");
-			break;
-		case '5': document.write("friday");
-			break;
-		case '6': document.write("sat");
-			break;
+// function getDateResults()
+// {
+// 	let data=new Date();
+// 	switch (data.getDay().toString()) {
+// 		case '0': document.write("sunday");
+// 			break;
+// 		case '1': document.write("mon");
+// 			break;
+// 		case '2': document.write("tue");
+// 			break;
+// 		case '3': document.write("wed");
+// 			break;
+// 		case '4': document.write("thursday");
+// 			break;
+// 		case '5': document.write("friday");
+// 			break;
+// 		case '6': document.write("sat");
+// 			break;
 			
-		default: document.write(".............");
+// 		default: document.write(".............");
 		
-	}
+// 	}
 
+// }
+
+// //events creting
+// function clicked()
+// {
+// 	alert("you clicked");
+// }
+
+
+let My_NOTE = '_my_note'; //creating key to set item in local storage 
+
+function onAddToDo() {
+	// body...
+	let myNote=document.getElementById('note').value; //capturing user input
+	// console.log(myNote); 
+	localStorage.setItem(My_NOTE, myNote); //create storage and store data within browser
+	
+	// onGetSavedNotes();
 }
 
-//events creting
-function clicked()
-{
-	alert("you clicked");
-}
+// function onGetSavedNotes{
+// 	let notes=localStorage.getItem(My_NOTE);
+// 	console.log(notes);
+// }
 
 
 
