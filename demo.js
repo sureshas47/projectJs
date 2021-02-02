@@ -158,7 +158,7 @@
 // 	console.log(value);
 // });
 
-//using foreach tot fetch index too
+//using foreach to fetch index too
 // let person=['suresh','adhikari','chitwan'];
 // person.forEach( function(value, index) {
 // 	console.log(value, index);
@@ -199,20 +199,91 @@
 
 
 let My_NOTE = '_my_note'; //creating key to set item in local storage 
+let eng_month=['jan','feb','march','april','may','jun','jul','aug',
+
+'sept','oct','nov','dec']//create array for printing month as text instead of month in number
+let my_multiple_notes=localStorage.getItem(My_NOTE)? //? is true >check value in localStorage,if value exist
+//fetch value otherwise [] empty push (simple if else )
+JSON.parse(localStorage.getItem(My_NOTE)):[];
+ //array to save multiple value, and json stringify is used to set value as an string.
+	window.onload=function (){
+	onGetSavedNotes(); //this function called at first to show already created notes
+};
 
 function onAddToDo() {
 	// body...
-	let myNote=document.getElementById('note').value; //capturing user input
+	let myNote=document.getElementById('notes').value; //capturing user input
 	// console.log(myNote); 
-	localStorage.setItem(My_NOTE, myNote); //create storage and store data within browser
-	
-	// onGetSavedNotes();
+
+
+//..............note...........mynotes.val/mynotes1 vaneko mynote vitrako value/mynotes ko pahilo index
+	let note={}; //create new object
+	note.value=myNote;
+	note.date=new Date();
+	note.id=new Date().getTime();
+	my_multiple_notes.push(note); //push all notes to my_multiple_notes array
+	//console.log( my_multiple_notes);
+	//sessionStorage.setItem(My_NOTE, myNote); //create session storage and store data within browser
+	localStorage.setItem(My_NOTE, JSON.stringify(my_multiple_notes)); //create local storage and store data within browser
+	//it has 5 mb of capacity to store value and is url based-every url has different local storage 
+
+	document.getElementById('notes').value=""; // this will clear the textarea after added
+	onGetSavedNotes();
 }
 
-// function onGetSavedNotes{
-// 	let notes=localStorage.getItem(My_NOTE);
-// 	console.log(notes);
-// }
+function onGetSavedNotes(){
+	//let notes=localStorage.getItem(My_NOTE); //fetch value from localStorage
+	let notes=my_multiple_notes; //bug fixing
+	// document.getElementById('mynotes').innerText=notes;
+	let my_notes_html='';
+	
+	// notes.forEach(function (val) {
+		notes.reverse().forEach( function(val, index) {
+			if (val) {
+			my_notes_html=my_notes_html+ 
+		`<div><p>${val.value}</p> 
+				<p>${getUserReadableDate(val.date)}</p>
+				<p>${val.id}</p>
+				<div class="delete" onclick="deleteNote(`+index+`)" >Delete</>
 
+				</div>`
+				}
+				
+		});
+		
+//either above
 
+		// '<div'+
+		// '<p>'+val.value+'</p>'+
+		// '<p>'+val.date+'</p>'+
+		// '</div>'//print value as string
+//or + to concat string 
+
+	// console.log(notes);
+	document.getElementById('myNotes').innerHTML=my_notes_html;
+
+}
+function getUserReadableDate(date)
+{
+	let readableDate=new Date(date);
+	//print date as 11 nov 2019 10:30
+	return readableDate.getDate()+'-'+eng_month[ readableDate.getMonth()]+
+	'-'+readableDate.getFullYear()+' & '+readableDate.getHours()+':'
+	+readableDate.getMinutes();
+
+}
+//pass index for deleting value
+function deleteNote(index){
+let alertMsg=confirm('do you want to delete selected note ?');
+	if (alertMsg==true){
+	
+	delete my_multiple_notes[index];
+	localStorage.setItem(My_NOTE, JSON.stringify(my_multiple_notes)); 
+	onGetSavedNotes();
+}
+else
+{
+	onGetSavedNotes();
+}
+}
 

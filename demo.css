@@ -16,3 +16,20 @@
 #noteBtn:hover{
 	background-color: white;
 	border: 1px solid #009600;
+
+}
+
+#mynotes{
+	color: green;
+	font-size: 24px;
+	padding-top: 60px;
+}
+.delete{
+	color:#f17972;
+	text-decoration: underline;
+
+}
+.delete:hover{
+	color: #9c0000;
+	cursor: pointer;
+}
