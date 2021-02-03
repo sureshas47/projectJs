@@ -18,9 +18,15 @@
        </div>
        <button id="" type="button" onclick="clicked()">click</button> -->
 
+       <div style="display: flex; justify-content: space-between;">
+       	<input type="text" id="searchText" onchange="" style="width: 100px; margin: 20px 2px;">
+       	 <button id="clearBtn" onclick="clearSearch()" style="width: 70px;">Clear Search</button>
+
+       	<button id="searchBtn" onclick="onSearchItem()" style="width: 100px;">Search</button>
+       </div>
+
        <textarea id="notes" placeholder="write to-do here"></textarea>
        <button id="noteBtn" onclick="onAddToDo()">Add Now</button>
-       
        
        <div id="myNotes">your saved notes</div>
 

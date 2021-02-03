@@ -207,7 +207,7 @@ let my_multiple_notes=localStorage.getItem(My_NOTE)? //? is true >check value in
 JSON.parse(localStorage.getItem(My_NOTE)):[];
  //array to save multiple value, and json stringify is used to set value as an string.
 	window.onload=function (){
-	onGetSavedNotes(); //this function called at first to show already created notes
+	onGetSavedNotes(my_multiple_notes); //this function called at first to show already created notes
 };
 
 function onAddToDo() {
@@ -228,12 +228,12 @@ function onAddToDo() {
 	//it has 5 mb of capacity to store value and is url based-every url has different local storage 
 
 	document.getElementById('notes').value=""; // this will clear the textarea after added
-	onGetSavedNotes();
+	onGetSavedNotes(my_multiple_notes);
 }
 
-function onGetSavedNotes(){
+function onGetSavedNotes(notes){
 	//let notes=localStorage.getItem(My_NOTE); //fetch value from localStorage
-	let notes=my_multiple_notes; //bug fixing
+	// let notes=my_multiple_notes; //bug fixing
 	// document.getElementById('mynotes').innerText=notes;
 	let my_notes_html='';
 	
@@ -279,11 +279,29 @@ let alertMsg=confirm('do you want to delete selected note ?');
 	
 	delete my_multiple_notes[index];
 	localStorage.setItem(My_NOTE, JSON.stringify(my_multiple_notes)); 
-	onGetSavedNotes();
+	onGetSavedNotes(my_multiple_notes);
 }
 else
 {
-	onGetSavedNotes();
+	onGetSavedNotes(my_multiple_notes);
+	
 }
 }
+
+function onSearchItem(){
+
+	let search_key=document.getElementById('searchText').value;
+	newArray=my_multiple_notes.filter(note=>note.value.toLowerCase()==search_key.toLowerCase());
+	//we can use ..indexOf to search by index
+	onGetSavedNotes(newArray);
+	console.log(my_multiple_notes);
+}
+
+function clearSearch()
+{
+	onGetSavedNotes(my_multiple_notes);
+}
+
+
+
 
