@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="promises.js"></script>
+</head>
+<body>
+	<!-- onsubmit event -->
+	<!-- <form method="POST" onsubmit="alert('its on submit')">
+		<input type="submit" value="submit"/>
+	</form> -->
+
+	<!-- onmouseover event -->
+	<div id="newDiv" 
+	onmouseover="document.getElementById('newDiv').style.background='black';" 
+	onmouseout="document.getElementById('newDiv').style.background='green';"
+	style="height:100px; width: 10px; background: green"></div> 
+	<!-- onmuseout event -->
+
+	<!-- event listener -->
+	<button id="btn">adEventListener</button>
+	<script> 
+		let eventListener=document.getElementById('btn');
+		eventListener.addEventListener('click', (event)=>{
+			
+			// callPromise();
+			// filter();
+			filterEx();
+			// alert('event trigered');
+		});
+		//arraw function use garda arko function banayera return garna parena, yesmai use garna milyo
+		//preventDefault is used to cancel the event
+	</script>
+
+</body>
+</html>
